@@ -8,13 +8,13 @@
 <% @slides.each do |slide| %>
   <tr>
     <td><%=h slide.slideshow_id %></td>
-    <td><%= link_to 'Show', slide %></td>
-    <td><%= link_to 'Edit', edit_slide_path(slide) %></td>
-    <td><%= link_to 'Destroy', slide, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_slideshow_slide_path(:slideshow_id => slide.slideshow_id, :id => slide) %></td>
+    <td><%= link_to 'Destroy', slideshow_slide_path(:slideshow_id => slide.slideshow_id, :id => slide), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New slide', new_slide_path %>
+<%= link_to 'Add slide', new_slideshow_slide_path(@slideshow) %> |
+<%= link_to 'Back to slideshow', slideshow_path(@slideshow) %>

@@ -4,5 +4,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_slide_path(@slide) %> |
-<%= link_to 'Back', slides_path %>
+<%= link_to 'Edit', edit_slideshow_slide_path(@slide.slideshow) %> |
+<%= link_to 'Back', slideshow_slides_path(@slide.slideshow) %>

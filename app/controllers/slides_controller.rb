@@ -2,7 +2,8 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.xml
   def index
-    @slides = Slide.all
+    @slideshow = Slideshow.find(params[:slideshow_id], :include => :slides)
+    @slides = @slideshow.slides
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +25,7 @@ class SlidesController < ApplicationController
   # GET /slides/new
   # GET /slides/new.xml
   def new
+    @slideshow_id = params[:slideshow_id]
     @slide = Slide.new
 
     respond_to do |format|
@@ -45,7 +47,7 @@ class SlidesController < ApplicationController
     respond_to do |format|
       if @slide.save
         flash[:notice] = 'Slide was successfully created.'
-        format.html { redirect_to(@slide) }
+        format.html { redirect_to(slideshow_url(@slide.slideshow)) }
         format.xml  { render :xml => @slide, :status => :created, :location => @slide }
       else
         format.html { render :action => "new" }
@@ -78,7 +80,7 @@ class SlidesController < ApplicationController
     @slide.destroy
 
     respond_to do |format|
-      format.html { redirect_to(slides_url) }
+      format.html { redirect_to(slideshow_slides_url(@slide.slideshow)) }
       format.xml  { head :ok }
     end
   end

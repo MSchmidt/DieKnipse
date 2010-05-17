@@ -1,7 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :slides
-
-  map.resources :slideshows
+  map.resources :slideshows, :has_many => :slides
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -3,6 +3,10 @@
   <%=h @slideshow.title %>
 </p>
 
+<% @slideshow.slides.each do |slide| %>
+  <%= image_tag slide.image.url %><br />
+<% end %>
 
+<%= link_to 'Add Slide', new_slideshow_slide_path(@slideshow) %> |
 <%= link_to 'Edit', edit_slideshow_path(@slideshow) %> |
 <%= link_to 'Back', slideshows_path %>
