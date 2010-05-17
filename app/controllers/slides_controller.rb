@@ -2,8 +2,8 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.xml
   def index
-    @slideshow = Slideshow.find(params[:slideshow_id], :include => :slides)
-    @slides = @slideshow.slides
+    @slideshow_id = params[:slideshow_id]
+    @slides = Slide.all(:conditions => ['slideshow_id = ?', @slideshow_id])
 
     respond_to do |format|
       format.html # index.html.erb

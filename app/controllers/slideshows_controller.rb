@@ -13,7 +13,7 @@ class SlideshowsController < ApplicationController
   # GET /slideshows/1
   # GET /slideshows/1.xml
   def show
-    @slideshow = Slideshow.find(params[:id])
+    @slideshow = Slideshow.find(params[:id], :joins => :slides)
 
     respond_to do |format|
       format.html # show.html.erb
