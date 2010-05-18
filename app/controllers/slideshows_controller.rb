@@ -1,4 +1,6 @@
 class SlideshowsController < ApplicationController
+  protect_from_forgery :except => [:create]
+  
   # GET /slideshows
   # GET /slideshows.xml
   def index
@@ -46,7 +48,7 @@ class SlideshowsController < ApplicationController
       if @slideshow.save
         flash[:notice] = 'Slideshow was successfully created.'
         format.html { redirect_to(@slideshow) }
-        format.xml  { render :xml => @slideshow, :status => :created, :location => @slideshow }
+        format.xml  { render :xml => @slideshow, :status => :created }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @slideshow.errors, :status => :unprocessable_entity }
