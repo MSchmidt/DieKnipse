@@ -2,9 +2,7 @@ require 'socket'
 
 class Slide < ActiveRecord::Base
   belongs_to :slideshow
-  has_attached_file :image,
-    :url => "/assets/:id/:style/:basename.:extension",
-    :path => ":rails_root/public/assets/:id/:style/:basename.:extension"
+  has_attached_file :image
   
   #validates_attachment_presence :image
   
