@@ -2,8 +2,7 @@
 
 <% form_for :slide, @slide, :url => slideshow_slides_path(@slideshow_id), :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
-
-  <%= f.hidden_field :slideshow_id, :value => @slideshow_id %>
+  
   <p>
     <%= f.label :image %><br />
     <%= f.file_field :image %>

@@ -1,4 +1,6 @@
 class SlidesController < ApplicationController
+  protect_from_forgery :except => [:create]
+  
   # GET /slides
   # GET /slides.xml
   def index
@@ -42,13 +44,13 @@ class SlidesController < ApplicationController
   # POST /slides
   # POST /slides.xml
   def create
-    @slide = Slide.new(params[:slide])
+    @slide = Slide.new(params[:slide].merge(:slideshow_id => params[:slideshow_id]))
 
     respond_to do |format|
       if @slide.save
         flash[:notice] = 'Slide was successfully created.'
         format.html { redirect_to(slideshow_url(@slide.slideshow)) }
-        format.xml  { render :xml => @slide, :status => :created, :location => @slide }
+        format.xml  { render :xml => @slide, :status => :created }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @slide.errors, :status => :unprocessable_entity }
