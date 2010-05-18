@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100517164924) do
+ActiveRecord::Schema.define(:version => 20100518224234) do
 
   create_table "slides", :force => true do |t|
     t.integer  "slideshow_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20100517164924) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "slideshows", :force => true do |t|

@@ -84,4 +84,16 @@ class SlideshowsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def sort
+    slideshow = Slideshow.find(params[:id])
+    y params[:id]
+    slideshow.slides.each do |slide|
+      slide.position = params['slide'].index(slide.id.to_s) + 1
+      slide.save
+    end
+    respond_to do |format|
+      format.xml  { head :ok }
+    end
+  end
 end

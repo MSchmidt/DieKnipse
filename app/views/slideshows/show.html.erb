@@ -1,12 +1,39 @@
+<% content_for :script do %>
+  <% javascript_tag do %>
+    $(document).ready(function() {
+     	$("ul#slides").sortable({
+     		update: function(event, ui) {
+     			$(ui.item).effect("highlight");
+     			var newPosition = ui.item.prevAll().length;
+     			// Now, you can use an AJAX call to send the new position back to the server, no messing with toArray or serialize
+     			$.ajax({
+     			  type: 'post', 
+             data: $('ul#slides').sortable('serialize') + '&id=<%= @slideshow.id %>', 
+             dataType: 'script', 
+             complete: function(request){
+                 $('ul#slides').effect('highlight');
+               },
+             url: '/slideshows/sort'
+          	})
+     		}
+     	});
+     });
+    <% end %>
+  
+<% end %>
+
 <p>
   <b>Title:</b>
   <%=h @slideshow.title %>
 </p>
 
+<ul id="slides">
 <% @slideshow.slides.each do |slide| %>
-  <%= image_tag slide.image.url %><br />
+  <% content_tag_for :li, slide do %>
+    <%= image_tag slide.image.url, :size => "240x160" %> <%=h slide.id%>
+  <% end %>
 <% end %>
-
+</ul>
 <%= link_to 'Add Slide', new_slideshow_slide_path(@slideshow) %> |
 <%= link_to 'Edit', edit_slideshow_path(@slideshow) %> |
 <%= link_to 'Back', slideshows_path %>
