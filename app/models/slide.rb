@@ -7,6 +7,6 @@ class Slide < ActiveRecord::Base
   #validates_attachment_presence :image
   
   def after_initialize
-    @attributes["image_url"] = image.url
+    @attributes["image_url"] = KNIPSE_CONFIG[:fqdn] + image.url
   end
 end

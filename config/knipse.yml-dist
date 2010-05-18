@@ -1,0 +1,4 @@
+development:
+  fqdn: http://localhost:3000
+production:
+  fqdn: http://example.com
