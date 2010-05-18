@@ -21,7 +21,7 @@ class SlidesControllerTest < ActionController::TestCase
   # end
   #
   # test "should show slide" do
-  #   get :show, :slideshow_id => slideshows(:one).to_param, :id => slides(:one).to_param
+  #   get :show, :id => slides(:one).to_param
   #   assert_response :success
   # end
   # 
