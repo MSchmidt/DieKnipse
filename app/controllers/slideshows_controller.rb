@@ -14,10 +14,10 @@ class SlideshowsController < ApplicationController
   # GET /slideshows/1.xml
   def show
     @slideshow = Slideshow.find(params[:id], :include => :slides)
-
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => [@slideshow, @slideshow.slides] }
+      format.xml  { render :xml => @slideshow.to_xml(:include => :slides) }
     end
   end
 
