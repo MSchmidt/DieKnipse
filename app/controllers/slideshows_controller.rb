@@ -1,5 +1,5 @@
 class SlideshowsController < ApplicationController
-  protect_from_forgery :except => [:create]
+  protect_from_forgery :except => [:create, :sort]
   
   # GET /slideshows
   # GET /slideshows.xml

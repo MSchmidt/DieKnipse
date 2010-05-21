@@ -8,7 +8,6 @@
   <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
   <%= javascript_include_tag 'jquery-ui-1.8.1.custom.min.js' %>
-  <%= javascript_include_tag 'knipse.js' %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   <%= yield :script %>
 </head>

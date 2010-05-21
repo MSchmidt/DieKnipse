@@ -30,7 +30,7 @@
 <ul id="slides">
 <% @slideshow.slides.each do |slide| %>
   <% content_tag_for :li, slide do %>
-    <%= image_tag slide.image.url, :size => "240x160" %> <%=h slide.id%>
+    <%= image_tag slide.image.url, :size => "240x160" %>
   <% end %>
 <% end %>
 </ul>
